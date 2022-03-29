@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_app/edit_jplatta_view.dart';
-import 'package:my_first_app/edit_jtelefon_view.dart';
-import 'package:my_first_app/edit_paronklocka_view.dart';
+
+import 'views/productviews/edit_jplatta_view.dart';
+import 'views/productviews/edit_jtelefon_view.dart';
+import 'views/productviews/edit_paronklocka_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Päron AB',
       theme: ThemeData(
         primarySwatch: Colors.green,
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -39,7 +42,7 @@ class MyHomePage extends StatelessWidget {
           children: [
             Container(height: 30),
             const Text(
-              ('Produkter'),
+              ('Products'),
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Container(height: 20),
@@ -51,12 +54,14 @@ class MyHomePage extends StatelessWidget {
                       builder: (context) => const EditJTelefonView()),
                 );
               },
+              //JTelefon ska fungera att ändra lagersaldo för
               child: const Card(
                 elevation: 5,
                 child: ListTile(
                   leading: Icon(Icons.smartphone),
                   title: Text('JTelefon'),
-                  subtitle: Text('Lagersaldo: 250 000'),
+                  subtitle: Text(
+                      'Total stock balance: 250 000'), //FÅ LAGERSALDO FRÅN FIRESTORE
                   trailing: Icon(Icons.edit),
                 ),
               ),
@@ -74,7 +79,8 @@ class MyHomePage extends StatelessWidget {
                 child: ListTile(
                   leading: Icon(Icons.tablet),
                   title: Text('JPlatta'),
-                  subtitle: Text('Lagersaldo: 330 000'),
+                  subtitle: Text(
+                      'Total stock balance: 330 000'), //FÅ LAGERSALDO FRÅN FIRESTORE
                   trailing: Icon(Icons.edit),
                 ),
               ),
@@ -92,7 +98,8 @@ class MyHomePage extends StatelessWidget {
                 child: ListTile(
                   leading: Icon(Icons.watch),
                   title: Text('Päronklocka'),
-                  subtitle: Text('Lagersaldo: 288 000'),
+                  subtitle: Text(
+                      'Total stock balance: 288 000'), //FÅ LAGERSALDO FRÅN FIRESTORE
                   trailing: Icon(Icons.edit),
                 ),
               ),
