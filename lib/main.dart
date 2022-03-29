@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_app/edit_jplatta_view.dart';
+import 'package:my_first_app/edit_jtelefon_view.dart';
+import 'package:my_first_app/edit_paronklocka_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,17 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Päron AB',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.green,
       ),
       home: const MyHomePage(),
@@ -49,31 +43,58 @@ class MyHomePage extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Container(height: 20),
-            const Card(
-              elevation: 5,
-              child: ListTile(
-                leading: Icon(Icons.smartphone),
-                title: Text('JTelefon'),
-                subtitle: Text('Lagersaldo: 250 000'),
-                trailing: Icon(Icons.edit),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const EditJTelefonView()),
+                );
+              },
+              child: const Card(
+                elevation: 5,
+                child: ListTile(
+                  leading: Icon(Icons.smartphone),
+                  title: Text('JTelefon'),
+                  subtitle: Text('Lagersaldo: 250 000'),
+                  trailing: Icon(Icons.edit),
+                ),
               ),
             ),
-            const Card(
-              elevation: 5,
-              child: ListTile(
-                leading: Icon(Icons.tablet),
-                title: Text('JPlatta'),
-                subtitle: Text('Lagersaldo: 330 000'),
-                trailing: Icon(Icons.edit),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const EditJPlattaView()),
+                );
+              },
+              child: const Card(
+                elevation: 5,
+                child: ListTile(
+                  leading: Icon(Icons.tablet),
+                  title: Text('JPlatta'),
+                  subtitle: Text('Lagersaldo: 330 000'),
+                  trailing: Icon(Icons.edit),
+                ),
               ),
             ),
-            const Card(
-              elevation: 5,
-              child: ListTile(
-                leading: Icon(Icons.watch),
-                title: Text('Päronklocka'),
-                subtitle: Text('Lagersaldo: 288 000'),
-                trailing: Icon(Icons.edit),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const EditParonklockaView()),
+                );
+              },
+              child: const Card(
+                elevation: 5,
+                child: ListTile(
+                  leading: Icon(Icons.watch),
+                  title: Text('Päronklocka'),
+                  subtitle: Text('Lagersaldo: 288 000'),
+                  trailing: Icon(Icons.edit),
+                ),
               ),
             ),
           ],
