@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "332045704296",
+    "project_id": "paronab-cebd9",
+    "storage_bucket": "paronab-cebd9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332045704296:android:e79502af3ab3013ae1efdd",
+        "android_client_info": {
+          "package_name": "se.gu.my_first_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "332045704296-644usqtd44n0a8b095f1du7rhcorvskg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWd_895paZfxGOoehI5urHkQwB8C7UKJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332045704296-644usqtd44n0a8b095f1du7rhcorvskg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

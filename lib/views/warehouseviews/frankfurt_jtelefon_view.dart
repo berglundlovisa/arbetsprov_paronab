@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class EditNorrkopingJTelefonView extends StatelessWidget {
-  const EditNorrkopingJTelefonView({Key? key}) : super(key: key);
+class EditFrankfurtJTelefonView extends StatelessWidget {
+  const EditFrankfurtJTelefonView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Norrköping inventory'),
+        title: const Text('Frankfurt inventory'),
         actions: [
           ElevatedButton(
             //VET EJ OM DENNA SAVE KNAPP BÖR VARA KVAR
@@ -25,14 +25,13 @@ class EditNorrkopingJTelefonView extends StatelessWidget {
           children: [
             Container(height: 30),
             const Text(
-              ('Edit stock balance JTelefon Norrköping'),
+              ('Edit stock balance JTelefon Frankfurt'),
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Container(height: 10),
             const Text('Stock balance Norrköping: 84 000'),
             Container(height: 20),
             addQuantityBox(),
-            Container(height: 10),
             subtractQuantityBox(),
           ],
         ),
@@ -64,7 +63,7 @@ class EditNorrkopingJTelefonView extends StatelessWidget {
         Container(height: 10),
         ElevatedButton(
           onPressed: () {},
-          child: Text('Add quantity'),
+          child: const Text('Add quantity'),
         ),
       ],
     );
@@ -94,7 +93,7 @@ class EditNorrkopingJTelefonView extends StatelessWidget {
         Container(height: 10),
         ElevatedButton(
           onPressed: () {},
-          child: Text('Subtract quantity'),
+          child: const Text('Subtract quantity'),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.red),
           ),

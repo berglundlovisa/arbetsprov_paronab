@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../warehouseviews/cupertino_view.dart';
-import '../warehouseviews/frankfurt_view.dart';
-import '../warehouseviews/norrkoping_view.dart';
+import '../warehouseviews/cupertino_jtelefon_view.dart';
+import '../warehouseviews/frankfurt_jtelefon_view.dart';
+import '../warehouseviews/norrkoping_jtelefon_view.dart';
 
 class EditJTelefonView extends StatelessWidget {
   const EditJTelefonView({Key? key}) : super(key: key);
