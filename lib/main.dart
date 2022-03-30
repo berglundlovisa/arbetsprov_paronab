@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Päron AB',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.lightGreen,
       ),
       home: const MyHomePage(),
     );
