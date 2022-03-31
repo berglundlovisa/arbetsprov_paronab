@@ -1,11 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'edit_product_view.dart';
-import 'model.dart';
-import 'views/productviews/edit_jplatta_view.dart';
-import 'views/productviews/edit_jtelefon_view.dart';
-import 'views/productviews/edit_paronklocka_view.dart';
 
 class HomePageView extends StatefulWidget {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -41,8 +36,8 @@ class _HomePageViewState extends State<HomePageView> {
                   }
                   return Expanded(
                       child: ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
+                          //  scrollDirection: Axis.vertical,
+                          // shrinkWrap: true,
                           itemCount: snapshot.data?.docs.length,
                           itemBuilder: (context, index) {
                             String itemTitle =
@@ -61,9 +56,10 @@ class _HomePageViewState extends State<HomePageView> {
   }
 }
 
+//CardItem definierar innehållet av ett product-card
 class CardItem extends StatefulWidget {
-  String? itemTitle;
-  String? itemQuantity;
+  String? itemTitle; //varje product behöver en titel
+  String? itemQuantity; //varje producy behöver en quantity
 
   CardItem({this.itemTitle, this.itemQuantity});
 
@@ -232,23 +228,4 @@ class MyHomePage extends StatelessWidget {
         ),
       ),*/
    
-/*
-class ProductList extends StatelessWidget {
-  final List<ProductItem> list;
 
-  const ProductList(this.list);
-
-  Widget build(BuildContext context) {
-    return ListView(
-        children:
-            list.map((product) => _productItem(context, product)).toList());
-  }
-
-  Widget _productItem(context, ProductItem product) {
-    var state = Provider.of<MyState>(context, listen: false);
-    return ListTile(
-      title: Text(product.productname),
-      subtitle: Text(product.productquantity),
-    );
-  }
-}*/
