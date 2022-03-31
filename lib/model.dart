@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 
 //ProductItem definierar innehållet av en produkt
 class ProductItem {
-  String? id; //varje produkt behöver ett id
-  String? productname; //varje produkt behöver en benämning
-  int? productquantity; //varje produkt behöver ett antal(lagersaldo)
+  String id; //varje produkt behöver ett id
+  String productname; //varje produkt behöver en benämning
+  String productquantity; //varje produkt behöver ett antal(lagersaldo)
 
   ProductItem(
       {required this.id,

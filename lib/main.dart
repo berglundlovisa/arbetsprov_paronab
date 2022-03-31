@@ -1,20 +1,25 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'homepage_view.dart';
-import 'model.dart';
-
+/*
 Future<void> main() async {
   var state = MyState();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
   runApp(
-    ChangeNotifierProvider(
+   ChangeNotifierProvider(
       create: (context) => state,
       child: const MyApp(),
     ),
   );
+}*/
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -28,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(),
+      home: HomePageView(),
     );
   }
 }
