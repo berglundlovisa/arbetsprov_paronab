@@ -1,19 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'homepage_view.dart';
-/*
-Future<void> main() async {
-  var state = MyState();
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-
-  runApp(
-   ChangeNotifierProvider(
-      create: (context) => state,
-      child: const MyApp(),
-    ),
-  );
-}*/
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
