@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'edit_product_view.dart';
+import 'edit_products_view.dart';
 
 class HomePageView extends StatefulWidget {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -28,6 +28,16 @@ class _HomePageViewState extends State<HomePageView> {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Container(height: 20),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const EditProductView(),
+                      ));
+                },
+                child: const Text('Update product quantity')),
+            Container(height: 20),
             StreamBuilder<QuerySnapshot>(
                 stream: widget._firestore.collection('products').snapshots(),
                 builder: (context, snapshot) {
@@ -35,19 +45,19 @@ class _HomePageViewState extends State<HomePageView> {
                     return const CircularProgressIndicator();
                   }
                   return Expanded(
-                      child: ListView.builder(
-                          //  scrollDirection: Axis.vertical,
-                          // shrinkWrap: true,
-                          itemCount: snapshot.data?.docs.length,
-                          itemBuilder: (context, index) {
-                            String itemTitle =
-                                snapshot.data?.docs[index]['productname'];
-                            String itemQuantity =
-                                snapshot.data?.docs[index]['productquantity'];
-                            return CardItem(
-                                itemTitle: itemTitle,
-                                itemQuantity: itemQuantity);
-                          }));
+                    child: ListView.builder(
+                        //  scrollDirection: Axis.vertical,
+                        // shrinkWrap: true,
+                        itemCount: snapshot.data?.docs.length,
+                        itemBuilder: (context, index) {
+                          String itemTitle =
+                              snapshot.data?.docs[index]['productname'];
+                          String itemQuantity =
+                              snapshot.data?.docs[index]['productquantity'];
+                          return CardItem(
+                              itemTitle: itemTitle, itemQuantity: itemQuantity);
+                        }),
+                  );
                 }),
           ],
         ),
@@ -71,17 +81,12 @@ class _CardItemState extends State<CardItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => EditProductView(),
-            ));
-      },
+      onTap: () {},
       child: Card(
         child: ListTile(
           title: Text(widget.itemTitle.toString()),
-          subtitle: Text(widget.itemQuantity.toString()),
+          subtitle: const Text('Totalt lagersaldo'),
+          trailing: Text(widget.itemQuantity.toString()),
         ),
       ),
     );
