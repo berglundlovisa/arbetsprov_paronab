@@ -62,7 +62,7 @@ class _EditProductViewState extends State<EditProductView> {
               child: const Text('Edit quantity JPlatta',
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
             ),
-            editJPlattaBox(),
+            editJPlattaField(),
             ElevatedButton(
               onPressed: () {
                 _updateJPlattaQuantity();
@@ -76,7 +76,7 @@ class _EditProductViewState extends State<EditProductView> {
               child: const Text('Edit quantity Paronklocka',
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
             ),
-            editParonklockaBox(),
+            editParonklockaField(),
             ElevatedButton(
               onPressed: () {
                 _updateParonklockaQuantity();
@@ -90,7 +90,7 @@ class _EditProductViewState extends State<EditProductView> {
               child: const Text('Edit quantity JTelefon',
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
             ),
-            editJTelefonBox(),
+            editJTelefonField(),
             ElevatedButton(
               onPressed: () {
                 _updateJTelefonQuantity();
@@ -104,7 +104,7 @@ class _EditProductViewState extends State<EditProductView> {
     );
   }
 
-  Widget editJPlattaBox() {
+  Widget editJPlattaField() {
     return Container(
       margin: const EdgeInsets.all(1),
       padding: const EdgeInsets.all(10),
@@ -125,7 +125,7 @@ class _EditProductViewState extends State<EditProductView> {
     );
   }
 
-  Widget editParonklockaBox() {
+  Widget editParonklockaField() {
     return Container(
       margin: const EdgeInsets.all(1),
       padding: const EdgeInsets.all(10),
@@ -146,7 +146,7 @@ class _EditProductViewState extends State<EditProductView> {
     );
   }
 
-  Widget editJTelefonBox() {
+  Widget editJTelefonField() {
     return Container(
       margin: const EdgeInsets.all(1),
       padding: const EdgeInsets.all(10),
