@@ -1,15 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'edit_products_view.dart';
+import 'package:my_first_app/views/jplattaviews/jplatta_main_view.dart';
+import 'views/jtelefonviews/jtelefon_main_view.dart';
+import 'views/paronklockaviews/paronklocka_main_view.dart';
 
-class HomePageView extends StatefulWidget {
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+class HomePageView extends StatelessWidget {
+  const HomePageView({Key? key}) : super(key: key);
 
-  @override
-  _HomePageViewState createState() => _HomePageViewState();
-}
-
-class _HomePageViewState extends State<HomePageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,16 +24,67 @@ class _HomePageViewState extends State<HomePageView> {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Container(height: 20),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const EditProductView(),
-                      ));
-                },
-                child: const Text('Update product quantity')),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const JPlattaMainView(),
+                    ));
+              },
+              child: const Card(
+                child: ListTile(
+                  leading: Icon(Icons.tablet),
+                  title: Text('JPlatta'),
+                  // subtitle: Text('Edit stock balance'),
+                  trailing: Icon(Icons.chevron_right),
+                ),
+              ),
+            ),
             Container(height: 20),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const JTelefonMainView(),
+                    ));
+              },
+              child: const Card(
+                child: ListTile(
+                  leading: Icon(Icons.smartphone),
+                  title: Text('JTelefon'),
+                  //   subtitle: Text('Edit stock balance'),
+                  trailing: Icon(Icons.chevron_right),
+                ),
+              ),
+            ),
+            Container(height: 20),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ParonklockaMainView(),
+                    ));
+              },
+              child: const Card(
+                child: ListTile(
+                  leading: Icon(Icons.watch),
+                  title: Text('Päronklocka'),
+                  //  subtitle: Text('Edit stock balance'),
+                  trailing: Icon(Icons.chevron_right),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+  /*
             StreamBuilder<QuerySnapshot>(
                 stream: widget._firestore.collection('products').snapshots(),
                 builder: (context, snapshot) {
@@ -59,12 +106,6 @@ class _HomePageViewState extends State<HomePageView> {
                         }),
                   );
                 }),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 //CardItem definierar innehållet av ett product-card
 class CardItem extends StatefulWidget {
@@ -91,146 +132,6 @@ class _CardItemState extends State<CardItem> {
       ),
     );
   }
-}
-
-
-/*
-class MyHomePage extends StatelessWidget {
-  MyHomePage({Key? key}) : super(key: key);
-
-  final _controller = TextEditingController();
-
-  void _saveProduct() {
-    final productName = _controller.text;
-
-    FirebaseFirestore.instance
-        .collection('products')
-        .add({'name': productName});
-
-    _controller.clear();
-  }
-
-  Widget _buildList(QuerySnapshot snapshot) {
-    return ListView.builder(
-        itemCount: snapshot.docs.length,
-        itemBuilder: (context, index) {
-          final doc = snapshot.docs[index];
-          return Card(
-            elevation: 3,
-            child: ListTile(
-              leading: const Icon(Icons.smartphone),
-              title: Text(doc['name']),
-              subtitle: const Text('Lagersaldo'),
-            ),
-          );
-        });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Päron AB'),
-      ),
-      body: Column(
-        children: [
-          TextField(
-            controller: _controller,
-            decoration: const InputDecoration(
-              hintText: 'Enter product',
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              _saveProduct();
-            },
-            child: const Text('Save'),
-          ),
-          StreamBuilder<QuerySnapshot>(
-              stream:
-                  FirebaseFirestore.instance.collection('products').snapshots(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) return const LinearProgressIndicator();
-                return Expanded(child: _buildList(snapshot.requireData));
-              }),
-        ],
-      ),
-    );
-  }
 }*/
 
-      /* Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(height: 30),
-            const Text(
-              ('Products'),
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            Container(height: 20),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const EditJTelefonView()),
-                );
-              },
-              //JTelefon ska fungera att ändra lagersaldo för
-              child: const Card(
-                elevation: 5,
-                child: ListTile(
-                  leading: Icon(Icons.smartphone),
-                  title: Text('JTelefon'),
-                  subtitle: Text(
-                      'Total stock balance: 250 000'), //FÅ LAGERSALDO FRÅN FIRESTORE
-                  trailing: Icon(Icons.edit),
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const EditJPlattaView()),
-                );
-              },
-              child: const Card(
-                elevation: 5,
-                child: ListTile(
-                  leading: Icon(Icons.tablet),
-                  title: Text('JPlatta'),
-                  subtitle: Text(
-                      'Total stock balance: 330 000'), //FÅ LAGERSALDO FRÅN FIRESTORE
-                  trailing: Icon(Icons.edit),
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const EditParonklockaView()),
-                );
-              },
-              child: const Card(
-                elevation: 5,
-                child: ListTile(
-                  leading: Icon(Icons.watch),
-                  title: Text('Päronklocka'),
-                  subtitle: Text(
-                      'Total stock balance: 288 000'), //FÅ LAGERSALDO FRÅN FIRESTORE
-                  trailing: Icon(Icons.edit),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),*/
-   
 

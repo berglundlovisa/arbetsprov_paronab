@@ -1,25 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class EditParonklockaView extends StatefulWidget {
-  const EditParonklockaView({Key? key}) : super(key: key);
+class ParonklockaFrankfurtView extends StatefulWidget {
+  const ParonklockaFrankfurtView({Key? key}) : super(key: key);
 
   @override
-  State<EditParonklockaView> createState() => _EditParonklockaViewState();
+  _ParonklockaFrankfurtViewState createState() =>
+      _ParonklockaFrankfurtViewState();
 }
 
-class _EditParonklockaViewState extends State<EditParonklockaView> {
+class _ParonklockaFrankfurtViewState extends State<ParonklockaFrankfurtView> {
   var num1 = 0, num2 = 0, sum = 0;
 
   final TextEditingController paronklockaController = TextEditingController();
 
-  //INLEVERANS PARONKLOCKA
+  //INLEVERANS JTELEFON
   void _addParonklockaQuantity() async {
-    var collection = FirebaseFirestore.instance.collection('products');
-    var docSnapshot = await collection.doc('KdWxwmT5HFeDUXv8a5g9').get();
+    var collection = FirebaseFirestore.instance.collection('paronklocka');
+    var docSnapshot = await collection.doc('paronklockaID').get();
     if (docSnapshot.exists) {
       Map<String, dynamic> data = docSnapshot.data()!;
-      var paronklockasavedquantity = data['productquantity'];
+      var paronklockasavedquantity = data['paronklockaFrankfurtQuantity'];
 
       setState(() {
         num1 = int.parse(paronklockaController.text);
@@ -31,13 +32,13 @@ class _EditParonklockaViewState extends State<EditParonklockaView> {
     }
   }
 
-//UTLEVERANS PARONKLOCKA
+  //UTLEVERANS JTELEFON
   void _subtractParonklockaQuantity() async {
-    var collection = FirebaseFirestore.instance.collection('products');
-    var docSnapshot = await collection.doc('KdWxwmT5HFeDUXv8a5g9').get();
+    var collection = FirebaseFirestore.instance.collection('paronklocka');
+    var docSnapshot = await collection.doc('paronklockaID').get();
     if (docSnapshot.exists) {
       Map<String, dynamic> data = docSnapshot.data()!;
-      var paronklockasavedquantity = data['productquantity'];
+      var paronklockasavedquantity = data['paronklockaFrankfurtQuantity'];
 
       setState(() {
         num1 = int.parse(paronklockaController.text);
@@ -53,9 +54,9 @@ class _EditParonklockaViewState extends State<EditParonklockaView> {
     final paronklockaQuantity = sum;
 
     FirebaseFirestore.instance
-        .collection('products')
-        .doc('KdWxwmT5HFeDUXv8a5g9')
-        .update({'productquantity': paronklockaQuantity})
+        .collection('paronklocka')
+        .doc('paronklockaID')
+        .update({'paronklockaFrankfurtQuantity': paronklockaQuantity})
         .then((value) => print('Product updated'))
         .catchError((error) => print('Failed to update product: $error'));
   }
@@ -76,7 +77,7 @@ class _EditParonklockaViewState extends State<EditParonklockaView> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
-                Icon(Icons.watch),
+                Icon(Icons.tablet),
                 Text(
                   ('Päronklocka'),
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -84,7 +85,7 @@ class _EditParonklockaViewState extends State<EditParonklockaView> {
               ],
             ),
             Container(height: 10),
-            const Text('Product number: P003'),
+            const Text('Frankfurt warehouse'),
             Container(height: 20),
             editParonklockaField(),
             Row(
@@ -98,15 +99,14 @@ class _EditParonklockaViewState extends State<EditParonklockaView> {
                   child: const Text('Add quantity'),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    _subtractParonklockaQuantity();
-                    Navigator.pop(context);
-                  },
-                  child: const Text('Remove quantity'),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.red),
-                  ),
-                ),
+                    onPressed: () {
+                      _subtractParonklockaQuantity();
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Remove quantity'),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.red),
+                    )),
               ],
             ),
           ],
@@ -136,16 +136,3 @@ class _EditParonklockaViewState extends State<EditParonklockaView> {
     );
   }
 }
-
- /*GestureDetector(
-              onTap: () {},
-              child: const Card(
-                elevation: 5,
-                child: ListTile(
-                  leading: Icon(Icons.warehouse),
-                  title: Text('Cupertino'),
-                  subtitle: Text('Stock balance: 96 000'),
-                  trailing: Icon(Icons.edit),
-                ),
-              ),
-            ),*/
