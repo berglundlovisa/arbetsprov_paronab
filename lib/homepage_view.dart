@@ -46,13 +46,13 @@ class _HomePageViewState extends State<HomePageView> {
                   }
                   return Expanded(
                     child: ListView.builder(
-                        //  scrollDirection: Axis.vertical,
+                        // scrollDirection: Axis.vertical,
                         // shrinkWrap: true,
                         itemCount: snapshot.data?.docs.length,
                         itemBuilder: (context, index) {
                           String itemTitle =
                               snapshot.data?.docs[index]['productname'];
-                          String itemQuantity =
+                          dynamic itemQuantity =
                               snapshot.data?.docs[index]['productquantity'];
                           return CardItem(
                               itemTitle: itemTitle, itemQuantity: itemQuantity);
@@ -69,7 +69,7 @@ class _HomePageViewState extends State<HomePageView> {
 //CardItem definierar innehållet av ett product-card
 class CardItem extends StatefulWidget {
   String? itemTitle; //varje product behöver en titel
-  String? itemQuantity; //varje producy behöver en quantity
+  dynamic itemQuantity; //varje producy behöver en quantity
 
   CardItem({this.itemTitle, this.itemQuantity});
 
