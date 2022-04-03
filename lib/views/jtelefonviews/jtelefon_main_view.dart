@@ -4,6 +4,7 @@ import 'jtelefon_cupertino_view.dart';
 import 'jtelefon_frankfurt_view.dart';
 import 'jtelefon_norrkoping_view.dart';
 
+//Första sidan för JTelefon
 class JTelefonMainView extends StatefulWidget {
   const JTelefonMainView({Key? key}) : super(key: key);
 
@@ -12,8 +13,10 @@ class JTelefonMainView extends StatefulWidget {
 }
 
 class _JTelefonMainViewState extends State<JTelefonMainView> {
+  //variabler som används för att beräkna totalt lagersaldo
   var num1 = 0, num2 = 0, num3 = 0, sum = 0;
 
+//funktion för att räkna ut totalt lagersaldo
   void calcTotalSumJTelefon() async {
     var collection = FirebaseFirestore.instance.collection('jTelefon');
     var docSnapshot = await collection.doc('jTelefonID').get();
@@ -36,7 +39,7 @@ class _JTelefonMainViewState extends State<JTelefonMainView> {
 
   @override
   Widget build(BuildContext context) {
-    calcTotalSumJTelefon();
+    calcTotalSumJTelefon(); //lagersaldo räknas ut när sidan byggs upp
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

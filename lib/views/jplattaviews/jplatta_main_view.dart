@@ -12,8 +12,10 @@ class JPlattaMainView extends StatefulWidget {
 }
 
 class _JPlattaMainViewState extends State<JPlattaMainView> {
+  //variabler som används för att beräkna totalt lagersaldo
   var num1 = 0, num2 = 0, num3 = 0, sum = 0;
 
+//funktion för att räkna ut totalt lagersaldo
   void calcTotalSumJPlatta() async {
     var collection = FirebaseFirestore.instance.collection('jPlatta');
     var docSnapshot = await collection.doc('jPlattaID').get();
@@ -36,7 +38,7 @@ class _JPlattaMainViewState extends State<JPlattaMainView> {
 
   @override
   Widget build(BuildContext context) {
-    calcTotalSumJPlatta();
+    calcTotalSumJPlatta(); //lagersaldo räknas ut när sidan byggs upp
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

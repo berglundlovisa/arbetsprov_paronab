@@ -4,6 +4,7 @@ import 'paronklocka_cupertino_view.dart';
 import 'paronklocka_frankfurt_view.dart';
 import 'paronklocka_norrkoping_view.dart';
 
+//Första sidan för Päronklocka
 class ParonklockaMainView extends StatefulWidget {
   const ParonklockaMainView({Key? key}) : super(key: key);
 
@@ -12,8 +13,10 @@ class ParonklockaMainView extends StatefulWidget {
 }
 
 class _ParonklockaMainViewState extends State<ParonklockaMainView> {
+  //variabler som används för att beräkna totalt lagersaldo
   var num1 = 0, num2 = 0, num3 = 0, sum = 0;
 
+//funktion för att räkna ut totalt lagersaldo
   void calcTotalSumParonklocka() async {
     var collection = FirebaseFirestore.instance.collection('paronklocka');
     var docSnapshot = await collection.doc('paronklockaID').get();
@@ -39,7 +42,7 @@ class _ParonklockaMainViewState extends State<ParonklockaMainView> {
 
   @override
   Widget build(BuildContext context) {
-    calcTotalSumParonklocka();
+    calcTotalSumParonklocka(); //lagersaldo räknas ut när sidan byggs upp
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

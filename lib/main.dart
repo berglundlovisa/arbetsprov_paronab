@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'homepage_view.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); //Uppstart av firebase
   await Firebase.initializeApp();
 
+//Kör app
   runApp(const MyApp());
 }
 

@@ -3,6 +3,7 @@ import 'package:my_first_app/views/jplattaviews/jplatta_main_view.dart';
 import 'views/jtelefonviews/jtelefon_main_view.dart';
 import 'views/paronklockaviews/paronklocka_main_view.dart';
 
+//Första sidan i appen
 class HomePageView extends StatelessWidget {
   const HomePageView({Key? key}) : super(key: key);
 
@@ -84,7 +85,9 @@ class HomePageView extends StatelessWidget {
   }
 }
 
-  /*
+  /*  Kod som inte används just nu men kanske vill återanvända
+     om jag vill hämta lista med data i firebase
+     
             StreamBuilder<QuerySnapshot>(
                 stream: widget._firestore.collection('products').snapshots(),
                 builder: (context, snapshot) {

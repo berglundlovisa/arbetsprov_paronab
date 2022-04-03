@@ -10,8 +10,10 @@ class ParonklockaFrankfurtView extends StatefulWidget {
 }
 
 class _ParonklockaFrankfurtViewState extends State<ParonklockaFrankfurtView> {
+  //variabler att använda för att beräkna nytt lagersaldo
   var num1 = 0, num2 = 0, sum = 0;
 
+//texteditingcontroller för textfältet
   final TextEditingController paronklockaController = TextEditingController();
 
   //INLEVERANS JTELEFON
@@ -50,6 +52,7 @@ class _ParonklockaFrankfurtViewState extends State<ParonklockaFrankfurtView> {
     }
   }
 
+//UPPDATERA LAGERSALDO
   void _updateParonklockaQuantity() {
     final paronklockaQuantity = sum;
 
@@ -115,6 +118,7 @@ class _ParonklockaFrankfurtViewState extends State<ParonklockaFrankfurtView> {
     );
   }
 
+//Textfält för att fylla i antal att ta bort/lägga till
   Widget editParonklockaField() {
     return Container(
       margin: const EdgeInsets.all(1),

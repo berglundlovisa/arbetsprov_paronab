@@ -9,8 +9,10 @@ class JTelefonCupertinoView extends StatefulWidget {
 }
 
 class _JTelefonCupertinoViewState extends State<JTelefonCupertinoView> {
+  //variabler att använda för att beräkna totalt lagersaldo
   var num1 = 0, num2 = 0, sum = 0;
 
+//texteditingcontroller för textfältet
   final TextEditingController jTelefonController = TextEditingController();
 
   //INLEVERANS JTELEFON
@@ -49,6 +51,7 @@ class _JTelefonCupertinoViewState extends State<JTelefonCupertinoView> {
     }
   }
 
+//UPPDATERA LAGERSALDO
   void _updateJTelefonQuantity() {
     final jTelefonQuantity = sum;
 
@@ -114,6 +117,7 @@ class _JTelefonCupertinoViewState extends State<JTelefonCupertinoView> {
     );
   }
 
+//Textfält för att fylla i antal att ta bort/lägga till
   Widget editJTelefonField() {
     return Container(
       margin: const EdgeInsets.all(1),

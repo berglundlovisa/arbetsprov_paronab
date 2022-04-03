@@ -9,8 +9,10 @@ class JPlattaFrankfurtView extends StatefulWidget {
 }
 
 class _JPlattaFrankfurtViewState extends State<JPlattaFrankfurtView> {
+  //variabler att använda för att beräkna nytt lagersaldo
   var num1 = 0, num2 = 0, sum = 0;
 
+//texteditingcontroller för textfältet
   final TextEditingController jPlattaController = TextEditingController();
 
   //INLEVERANS JTELEFON
@@ -49,6 +51,7 @@ class _JPlattaFrankfurtViewState extends State<JPlattaFrankfurtView> {
     }
   }
 
+//UPPDATERA LAGERSALDO
   void _updateJPlattaQuantity() {
     final jPlattaQuantity = sum;
 
@@ -114,6 +117,7 @@ class _JPlattaFrankfurtViewState extends State<JPlattaFrankfurtView> {
     );
   }
 
+//Textfält för att fylla i antal att ta bort/lägga till
   Widget editJTelefonField() {
     return Container(
       margin: const EdgeInsets.all(1),
