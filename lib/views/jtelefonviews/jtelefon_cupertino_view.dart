@@ -1,29 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../warehouseviews/cupertino_jtelefon_view.dart';
-import '../warehouseviews/frankfurt_jtelefon_view.dart';
-import '../warehouseviews/norrkoping_jtelefon_view.dart';
-
-class EditJTelefonView extends StatefulWidget {
-  const EditJTelefonView({Key? key}) : super(key: key);
+class JTelefonCupertinoView extends StatefulWidget {
+  const JTelefonCupertinoView({Key? key}) : super(key: key);
 
   @override
-  State<EditJTelefonView> createState() => _EditJTelefonViewState();
+  _JTelefonCupertinoViewState createState() => _JTelefonCupertinoViewState();
 }
 
-class _EditJTelefonViewState extends State<EditJTelefonView> {
+class _JTelefonCupertinoViewState extends State<JTelefonCupertinoView> {
   var num1 = 0, num2 = 0, sum = 0;
 
   final TextEditingController jTelefonController = TextEditingController();
 
   //INLEVERANS JTELEFON
   void _addJTelefonQuantity() async {
-    var collection = FirebaseFirestore.instance.collection('products');
-    var docSnapshot = await collection.doc('ZNPanC1KAFUlWkGL5kOJ').get();
+    var collection = FirebaseFirestore.instance.collection('jTelefon');
+    var docSnapshot = await collection.doc('jTelefonID').get();
     if (docSnapshot.exists) {
       Map<String, dynamic> data = docSnapshot.data()!;
-      var jtelefonsavedquantity = data['productquantity'];
+      var jtelefonsavedquantity = data['jTelefonCupertinoQuantity'];
 
       setState(() {
         num1 = int.parse(jTelefonController.text);
@@ -37,11 +33,11 @@ class _EditJTelefonViewState extends State<EditJTelefonView> {
 
   //UTLEVERANS JTELEFON
   void _subtractJTelefonQuantity() async {
-    var collection = FirebaseFirestore.instance.collection('products');
-    var docSnapshot = await collection.doc('ZNPanC1KAFUlWkGL5kOJ').get();
+    var collection = FirebaseFirestore.instance.collection('jTelefon');
+    var docSnapshot = await collection.doc('jTelefonID').get();
     if (docSnapshot.exists) {
       Map<String, dynamic> data = docSnapshot.data()!;
-      var jtelefonsavedquantity = data['productquantity'];
+      var jtelefonsavedquantity = data['jTelefonCupertinoQuantity'];
 
       setState(() {
         num1 = int.parse(jTelefonController.text);
@@ -57,9 +53,9 @@ class _EditJTelefonViewState extends State<EditJTelefonView> {
     final jTelefonQuantity = sum;
 
     FirebaseFirestore.instance
-        .collection('products')
-        .doc('ZNPanC1KAFUlWkGL5kOJ')
-        .update({'productquantity': jTelefonQuantity})
+        .collection('jTelefon')
+        .doc('jTelefonID')
+        .update({'jTelefonCupertinoQuantity': jTelefonQuantity})
         .then((value) => print('Product updated'))
         .catchError((error) => print('Failed to update product: $error'));
   }
@@ -88,7 +84,7 @@ class _EditJTelefonViewState extends State<EditJTelefonView> {
               ],
             ),
             Container(height: 10),
-            const Text('Product number: P001'),
+            const Text('Cupertino warehouse'),
             Container(height: 20),
             editJTelefonField(),
             Row(
@@ -133,7 +129,7 @@ class _EditJTelefonViewState extends State<EditJTelefonView> {
             borderRadius: BorderRadius.all(Radius.circular(20.0)),
             borderSide: BorderSide(color: Colors.black),
           ),
-          hintText: 'Enter new JTelefon quantity',
+          hintText: 'Enter quantity to add or remove',
         ),
       ),
     );
